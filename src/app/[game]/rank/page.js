@@ -1,12 +1,13 @@
 "use client";
-import { useEffect, useState } from "react";
+import { use, useEffect, useState } from "react";
 
 export default function RankOverlay({ params }) {
   const [data, setData] = useState(null);
+  const { game } = use(params);
 
   async function poll() {
     try {
-      const res = await fetch(`/api/overlay/${params.game}`);
+      const res = await fetch(`/api/overlay/${game}`);
       if (!res.ok) return;
       const json = await res.json();
       setData(json);
@@ -17,7 +18,7 @@ export default function RankOverlay({ params }) {
     poll();
     const interval = setInterval(poll, 5000);
     return () => clearInterval(interval);
-  }, [params.game]);
+  }, [game]);
 
   if (!data?.rank) {
     return (
@@ -39,7 +40,7 @@ export default function RankOverlay({ params }) {
       alignItems: "baseline",
       gap: "10px",
     }}>
-      <span style={{ fontSize: "46px", fontWeight: "700", color: "#ffffff", lineHeight: 1 }}>
+      <span style={{ fontSize: "46px", fontWeight: "700", color: "#a78bfa", lineHeight: 1 }}>
         {data.rank}
       </span>
       {data.subheading && (

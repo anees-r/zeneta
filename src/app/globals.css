@@ -4,11 +4,6 @@
 @tailwind components;
 @tailwind utilities;
 
-/*
-  Darkest Saturday custom font.
-  1. Download your .woff2 / .ttf file
-  2. Place it in /public/fonts/DarkestSaturday.woff2
-*/
 @font-face {
   font-family: "DarkestSaturday";
   src: url("/fonts/DarkestSaturday.woff2") format("woff2"),
@@ -52,12 +47,11 @@ html, body {
   margin: 0;
   padding: 0;
   font-family: "Space Grotesk", sans-serif;
-  background: #080b08;
-  color: #e8f5e8;
+  background: #0a0710;
+  color: #e8e0f0;
 }
 
-/* Scrollbar — matches dark theme */
 ::-webkit-scrollbar { width: 6px; height: 6px; }
-::-webkit-scrollbar-track { background: #0d120d; }
-::-webkit-scrollbar-thumb { background: rgba(163,230,53,0.2); border-radius: 3px; }
-::-webkit-scrollbar-thumb:hover { background: rgba(163,230,53,0.4); }
+::-webkit-scrollbar-track { background: #0d0a18; }
+::-webkit-scrollbar-thumb { background: rgba(124,58,237,0.3); border-radius: 3px; }
+::-webkit-scrollbar-thumb:hover { background: rgba(124,58,237,0.5); }

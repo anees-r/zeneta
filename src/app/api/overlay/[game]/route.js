@@ -4,7 +4,8 @@ import { getOverlayData } from "@/lib/queries";
 // Public endpoint — polled by OBS overlay pages every 5s
 export async function GET(req, { params }) {
   try {
-    const data = await getOverlayData(params.game);
+    const { game } = await params;
+    const data = await getOverlayData(game);
     if (!data) {
       return NextResponse.json({ error: "Game not found" }, { status: 404 });
     }

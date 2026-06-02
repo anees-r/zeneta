@@ -1,13 +1,14 @@
 "use client";
-import { useEffect, useState } from "react";
+import { use, useEffect, useState } from "react";
 
 export default function WLOverlay({ params }) {
   const [data, setData]     = useState(null);
   const [error, setError]   = useState(false);
+  const { game } = use(params);
 
   async function poll() {
     try {
-      const res = await fetch(`/api/overlay/${params.game}`);
+      const res = await fetch(`/api/overlay/${game}`);
       if (!res.ok) { setError(true); return; }
       const json = await res.json();
       setData(json);
@@ -21,7 +22,7 @@ export default function WLOverlay({ params }) {
     poll();
     const interval = setInterval(poll, 5000);
     return () => clearInterval(interval);
-  }, [params.game]);
+  }, [game]);
 
   // No active session
   if (!data || (data.wins === null && data.losses === null)) {
@@ -47,11 +48,11 @@ export default function WLOverlay({ params }) {
       padding: "4px 0",
     }}>
       <span style={{ fontSize: "52px", fontWeight: "700", color: "#a3e635", lineHeight: 1 }}>
-        {data.wins ?? 0}
+        W {data.wins ?? 0}
       </span>
       <span style={{ fontSize: "28px", color: "rgba(255,255,255,0.15)" }}>/</span>
       <span style={{ fontSize: "52px", fontWeight: "700", color: "#a78bfa", lineHeight: 1 }}>
-        {data.losses ?? 0}
+        L {data.losses ?? 0}
       </span>
     </div>
   );

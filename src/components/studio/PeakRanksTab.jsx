@@ -45,7 +45,7 @@ function PeakRankRow({ game, existingRank }) {
           <Input value={subheading} onChange={(e) => setSubheading(e.target.value)}
             placeholder="e.g. 12 RR" />
         </div>
-        <Button type="submit" variant={saved ? "lime" : "lime-outline"}
+        <Button type="submit" variant={saved ? "purple" : "purple-outline"}
           disabled={saving} className="shrink-0 gap-1.5">
           {saved ? <><Check className="w-3.5 h-3.5" /> Saved</> : saving ? "Saving..." : "Save"}
         </Button>

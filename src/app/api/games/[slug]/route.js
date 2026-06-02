@@ -8,7 +8,8 @@ export async function DELETE(req, { params }) {
   if (!session) return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
 
   try {
-    await deleteGame(params.slug);
+    const { slug } = await params;
+    await deleteGame(slug);
     return NextResponse.json({ success: true });
   } catch (e) {
     return NextResponse.json({ error: "Failed to delete game" }, { status: 500 });
