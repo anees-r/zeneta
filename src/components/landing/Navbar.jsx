@@ -13,10 +13,10 @@ export default function Navbar() {
       </Link>
       <div className="hidden md:flex items-center gap-8">
         <a href="https://www.youtube.com/@zeneta-yt" target="_blank" rel="noopener noreferrer"
-          className="text-sm text-white/40 hover:text-violet-300 transition-colors tracking-wide">YouTube</a>
+          className="text-sm text-white/40 hover:text-lime-300 transition-colors tracking-wide">YouTube</a>
         <a href="https://instagram.com/zenetagram" target="_blank" rel="noopener noreferrer"
-          className="text-sm text-white/40 hover:text-violet-300 transition-colors tracking-wide">Instagram</a>
-        <Link href="#games" className="text-sm text-white/40 hover:text-violet-300 transition-colors tracking-wide">Games</Link>
+          className="text-sm text-white/40 hover:text-lime-300 transition-colors tracking-wide">Instagram</a>
+        <Link href="#games" className="text-sm text-white/40 hover:text-lime-300 transition-colors tracking-wide">Games</Link>
       </div>
       <Link href={session ? "/studio" : "/login"}>
         <Button variant="purple-outline" className="text-sm tracking-wide">

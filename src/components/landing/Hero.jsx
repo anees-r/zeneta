@@ -52,8 +52,8 @@ export default function Hero() {
           <p className="text-lg text-white/45 font-light max-w-lg leading-relaxed mb-3">
             Just a dude trying to figure out this Streaming stuff.
           </p>
-          <p className="text-sm text-white/25 tracking-wide mb-10">
-            Pakistan &mdash; Video Games · Art · Anime · Books
+          <p className="text-sm text-white/25 tracking-wide max-w-md mb-10">
+            Pakistan-based gamer & creator. Valorant, CS2, story-mode games, anime & books. Probably hard stuck but having fun.
           </p>
 
           <div className="flex flex-wrap gap-3">
