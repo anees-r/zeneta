@@ -40,12 +40,12 @@ export default function RankOverlay({ params }) {
       alignItems: "baseline",
       gap: "10px",
     }}>
-      <span style={{ fontSize: "46px", fontWeight: "700", color: "#a78bfa", lineHeight: 1 }}>
+      <span style={{ fontSize: "46px", fontWeight: "700", color: "#a738fc", lineHeight: 1 }}>
         {data.rank}
       </span>
       {data.subheading && (
         <>
-          <span style={{ fontSize: "28px", color: "rgba(255,255,255,0.2)" }}>—</span>
+          <span style={{ fontSize: "28px", color: "rgba(255,255,255,1)" }}>—</span>
           <span style={{ fontSize: "38px", fontWeight: "600", color: "#a3e635", lineHeight: 1 }}>
             {data.subheading}
           </span>
