@@ -118,7 +118,7 @@ export async function getGameTotals() {
     LEFT JOIN sessions s ON s.game_slug = gc.slug
     LEFT JOIN peak_ranks pr ON pr.game_slug = gc.slug
     GROUP BY gc.slug, gc.name, pr.rank, pr.subheading
-    ORDER BY gc.name
+    ORDER BY COALESCE(SUM(s.wins), 0) + COALESCE(SUM(s.losses), 0) DESC, gc.name;
   `);
   return result.rows ?? result;
 }
