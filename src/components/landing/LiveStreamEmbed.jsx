@@ -1,12 +1,10 @@
 "use client";
 import { useEffect, useState } from "react";
 
-const YOUTUBE_CHANNEL_ID = "UCiwbfAXFt63bna-33MrGa0A";
-const LIVE_STREAM_URL = `https://www.youtube.com/embed/live_stream?channel=${YOUTUBE_CHANNEL_ID}&autoplay=1&mute=1&rel=0`;
-
 export default function LiveStreamEmbed({ settings: providedSettings = null }) {
   const [settings, setSettings] = useState(null);
   const activeSettings = providedSettings ?? settings;
+  const LIVE_STREAM_URL = `https://www.youtube.com/embed/live_stream?channel=${process.env.NEXT_PUBLIC_YOUTUBE_CHANNEL_ID}&autoplay=1&mute=1&rel=0`;
 
   useEffect(() => {
     if (providedSettings) return undefined;
