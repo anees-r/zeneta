@@ -293,9 +293,11 @@ export default function SessionsTab() {
             Active Sessions ({activeSessions.length})
           </h2>
           <div className="rounded-xl border border-violet-500/15 overflow-hidden">
-            <table className="w-full"><THead />
-              <tbody>{activeSessions.map(s => <SessionRow key={s.id} session={s} onUpdate={handleUpdate} onEnd={handleEnd} onDelete={handleDelete} />)}</tbody>
-            </table>
+            <div className="overflow-x-auto">
+              <table className="min-w-[800px] w-full"><THead />
+                <tbody>{activeSessions.map(s => <SessionRow key={s.id} session={s} onUpdate={handleUpdate} onEnd={handleEnd} onDelete={handleDelete} />)}</tbody>
+              </table>
+            </div>
           </div>
         </div>
       )}
@@ -305,10 +307,12 @@ export default function SessionsTab() {
         <h2 className="text-xs text-white/25 uppercase tracking-widest mb-3">Past Sessions ({endedSessions.length})</h2>
         {endedSessions.length === 0
           ? <p className="text-white/20 text-sm">No ended sessions yet.</p>
-          : <div className="rounded-xl border border-violet-500/[0.08] overflow-hidden">
-              <table className="w-full"><THead />
-                <tbody>{endedSessions.map(s => <SessionRow key={s.id} session={s} onUpdate={handleUpdate} onEnd={handleEnd} onDelete={handleDelete} />)}</tbody>
-              </table>
+          : <div className="rounded-xl border border-violet-500/15 overflow-hidden">
+              <div className="overflow-x-auto">
+                <table className="min-w-[800px] w-full"><THead />
+                  <tbody>{endedSessions.map(s => <SessionRow key={s.id} session={s} onUpdate={handleUpdate} onEnd={handleEnd} onDelete={handleDelete} />)}</tbody>
+                </table>
+              </div>
             </div>
         }
       </div>
