@@ -1,0 +1,504 @@
+
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;700&family=Playfair+Display:wght@700;900&display=swap');
+
+  .zen-root {
+    background: #0a0710;
+    color: #e8e0f0;
+    font-family: 'Space Grotesk', sans-serif;
+    min-height: 900px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .zen-noise {
+    position: absolute;
+    inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");
+    pointer-events: none;
+    opacity: 0.4;
+  }
+
+  .zen-glow-1 {
+    position: absolute;
+    width: 500px;
+    height: 500px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(100,60,180,0.18) 0%, transparent 70%);
+    top: -100px;
+    right: -100px;
+    pointer-events: none;
+  }
+
+  .zen-glow-2 {
+    position: absolute;
+    width: 400px;
+    height: 400px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(140,90,210,0.12) 0%, transparent 70%);
+    bottom: 100px;
+    left: -80px;
+    pointer-events: none;
+  }
+
+  .zen-nav {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1.25rem 2rem;
+    border-bottom: 0.5px solid rgba(160,100,255,0.15);
+    position: relative;
+    z-index: 10;
+  }
+
+  .zen-logo {
+    font-family: 'Playfair Display', serif;
+    font-size: 22px;
+    font-weight: 900;
+    background: linear-gradient(135deg, #c084fc, #a855f7, #7c3aed);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    letter-spacing: 0.05em;
+  }
+
+  .zen-logo span {
+    font-size: 13px;
+    font-weight: 400;
+    background: linear-gradient(135deg, #c084fc, #a855f7);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+
+  .zen-nav-links {
+    display: flex;
+    gap: 2rem;
+    align-items: center;
+  }
+
+  .zen-nav-links a {
+    color: rgba(232,224,240,0.6);
+    font-size: 13px;
+    font-weight: 400;
+    text-decoration: none;
+    letter-spacing: 0.03em;
+    transition: color 0.2s;
+    cursor: pointer;
+  }
+
+  .zen-nav-links a:hover { color: #c084fc; }
+
+  .zen-btn-studio {
+    background: linear-gradient(135deg, #7c3aed, #5b21b6);
+    color: #f3e8ff;
+    font-size: 13px;
+    font-weight: 500;
+    border: none;
+    padding: 8px 20px;
+    border-radius: 6px;
+    cursor: pointer;
+    letter-spacing: 0.04em;
+    font-family: 'Space Grotesk', sans-serif;
+  }
+
+  .zen-hero {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 3rem;
+    padding: 5rem 2rem 3rem;
+    position: relative;
+    z-index: 10;
+    align-items: center;
+  }
+
+  .zen-tag {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    background: rgba(124,58,237,0.15);
+    border: 0.5px solid rgba(124,58,237,0.4);
+    color: #c084fc;
+    font-size: 11px;
+    font-weight: 500;
+    padding: 4px 12px;
+    border-radius: 20px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    margin-bottom: 1.25rem;
+  }
+
+  .zen-dot {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: #c084fc;
+    animation: pulse 2s infinite;
+  }
+
+  @keyframes pulse {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.3; }
+  }
+
+  .zen-h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: 52px;
+    font-weight: 900;
+    line-height: 1.05;
+    margin: 0 0 1.25rem;
+    color: #f3e8ff;
+  }
+
+  .zen-h1 .accent {
+    background: linear-gradient(135deg, #c084fc, #a855f7);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+
+  .zen-bio {
+    color: rgba(232,224,240,0.65);
+    font-size: 15px;
+    line-height: 1.7;
+    margin: 0 0 2rem;
+    max-width: 400px;
+  }
+
+  .zen-cta-group {
+    display: flex;
+    gap: 12px;
+    flex-wrap: wrap;
+  }
+
+  .zen-cta-primary {
+    background: linear-gradient(135deg, #7c3aed, #5b21b6);
+    color: #f3e8ff;
+    font-size: 14px;
+    font-weight: 500;
+    border: none;
+    padding: 11px 28px;
+    border-radius: 7px;
+    cursor: pointer;
+    font-family: 'Space Grotesk', sans-serif;
+    letter-spacing: 0.03em;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .zen-cta-secondary {
+    background: transparent;
+    color: rgba(232,224,240,0.75);
+    font-size: 14px;
+    font-weight: 400;
+    border: 0.5px solid rgba(160,100,255,0.3);
+    padding: 11px 24px;
+    border-radius: 7px;
+    cursor: pointer;
+    font-family: 'Space Grotesk', sans-serif;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .zen-hero-right {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .zen-stat-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+  }
+
+  .zen-stat-card {
+    background: rgba(255,255,255,0.03);
+    border: 0.5px solid rgba(160,100,255,0.15);
+    border-radius: 10px;
+    padding: 1rem 1.25rem;
+  }
+
+  .zen-stat-label {
+    font-size: 11px;
+    color: rgba(232,224,240,0.4);
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    margin-bottom: 4px;
+  }
+
+  .zen-stat-val {
+    font-size: 22px;
+    font-weight: 700;
+    color: #c084fc;
+  }
+
+  .zen-stat-sub {
+    font-size: 11px;
+    color: rgba(232,224,240,0.45);
+    margin-top: 2px;
+  }
+
+  .zen-overlay-preview {
+    background: rgba(124,58,237,0.07);
+    border: 0.5px solid rgba(124,58,237,0.25);
+    border-radius: 10px;
+    padding: 1.25rem;
+  }
+
+  .zen-overlay-label {
+    font-size: 11px;
+    color: rgba(192,132,252,0.7);
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    margin-bottom: 10px;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+  }
+
+  .zen-overlay-row {
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+  }
+
+  .zen-wl-wins {
+    font-size: 32px;
+    font-weight: 700;
+    color: #4ade80;
+    font-family: 'Playfair Display', serif;
+  }
+
+  .zen-wl-sep {
+    font-size: 20px;
+    color: rgba(232,224,240,0.2);
+  }
+
+  .zen-wl-losses {
+    font-size: 32px;
+    font-weight: 700;
+    color: #f87171;
+    font-family: 'Playfair Display', serif;
+  }
+
+  .zen-wl-sub {
+    font-size: 12px;
+    color: rgba(232,224,240,0.35);
+    margin-left: auto;
+  }
+
+  .zen-rank-preview {
+    margin-top: 10px;
+    padding-top: 10px;
+    border-top: 0.5px solid rgba(160,100,255,0.1);
+    font-size: 18px;
+    font-weight: 600;
+    color: #c084fc;
+  }
+
+  .zen-rank-sub {
+    font-size: 14px;
+    color: rgba(232,224,240,0.45);
+    margin-left: 8px;
+    font-weight: 400;
+  }
+
+  .zen-section {
+    padding: 3rem 2rem;
+    position: relative;
+    z-index: 10;
+    border-top: 0.5px solid rgba(160,100,255,0.08);
+  }
+
+  .zen-section-label {
+    font-size: 11px;
+    color: #a855f7;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    margin-bottom: 2rem;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .zen-section-label::after {
+    content: '';
+    flex: 1;
+    height: 0.5px;
+    background: rgba(160,100,255,0.2);
+  }
+
+  .zen-games-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 12px;
+  }
+
+  .zen-game-card {
+    background: rgba(255,255,255,0.02);
+    border: 0.5px solid rgba(160,100,255,0.12);
+    border-radius: 10px;
+    padding: 1.25rem;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .zen-game-title {
+    font-size: 13px;
+    font-weight: 500;
+    color: #e8e0f0;
+    letter-spacing: 0.03em;
+  }
+
+  .zen-game-wl {
+    display: flex;
+    gap: 8px;
+    align-items: center;
+  }
+
+  .zen-game-w { font-size: 20px; font-weight: 700; color: #4ade80; }
+  .zen-game-l { font-size: 20px; font-weight: 700; color: #f87171; }
+  .zen-game-div { font-size: 14px; color: rgba(232,224,240,0.2); }
+
+  .zen-game-rank {
+    font-size: 12px;
+    color: #c084fc;
+    font-weight: 400;
+  }
+
+  .zen-footer {
+    padding: 1.5rem 2rem;
+    border-top: 0.5px solid rgba(160,100,255,0.1);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    position: relative;
+    z-index: 10;
+  }
+
+  .zen-footer-left {
+    font-size: 12px;
+    color: rgba(232,224,240,0.3);
+  }
+
+  .zen-social-links {
+    display: flex;
+    gap: 16px;
+  }
+
+  .zen-social-links a {
+    font-size: 12px;
+    color: rgba(232,224,240,0.35);
+    text-decoration: none;
+    letter-spacing: 0.04em;
+    cursor: pointer;
+  }
+
+  .zen-social-links a:hover { color: #c084fc; }
+</style>
+
+<div class="zen-root">
+  <div class="zen-noise"></div>
+  <div class="zen-glow-1"></div>
+  <div class="zen-glow-2"></div>
+
+  <nav class="zen-nav">
+    <div class="zen-logo">ZENETA <span>.gg</span></div>
+    <div class="zen-nav-links">
+      <a>games</a>
+      <a>youtube</a>
+      <a>about</a>
+      <button class="zen-btn-studio">→ Studio</button>
+    </div>
+  </nav>
+
+  <section class="zen-hero">
+    <div>
+      <div class="zen-tag">
+        <div class="zen-dot"></div>
+        live &amp; streaming
+      </div>
+      <h1 class="zen-h1">Just a dude<br>figuring out<br><span class="accent">this stuff.</span></h1>
+      <p class="zen-bio">Pakistan-based gamer &amp; creator. Valorant, CS2, story-mode games, anime. Probably hard stuck but having fun.</p>
+      <div class="zen-cta-group">
+        <button class="zen-cta-primary">
+          <i class="ti ti-brand-youtube" aria-hidden="true"></i>
+          Watch on YouTube
+        </button>
+        <button class="zen-cta-secondary">
+          <i class="ti ti-brand-instagram" aria-hidden="true"></i>
+          @zenetagram
+        </button>
+      </div>
+    </div>
+
+    <div class="zen-hero-right">
+      <div class="zen-stat-grid">
+        <div class="zen-stat-card">
+          <div class="zen-stat-label">Main Game</div>
+          <div class="zen-stat-val">Valorant</div>
+          <div class="zen-stat-sub">Primary ranked</div>
+        </div>
+        <div class="zen-stat-card">
+          <div class="zen-stat-label">Also Plays</div>
+          <div class="zen-stat-val">CS2</div>
+          <div class="zen-stat-sub">+ story mode</div>
+        </div>
+      </div>
+
+      <div class="zen-overlay-preview">
+        <div class="zen-overlay-label">
+          <div class="zen-dot"></div>
+          live overlay preview — valorant
+        </div>
+        <div class="zen-overlay-row">
+          <span class="zen-wl-wins">W 25</span>
+          <span class="zen-wl-sep">/</span>
+          <span class="zen-wl-losses">L 12</span>
+          <span class="zen-wl-sub">this session</span>
+        </div>
+        <div class="zen-rank-preview">
+          Ascendant 2 <span class="zen-rank-sub">— 68 RR</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="zen-section">
+    <div class="zen-section-label">games tracked</div>
+    <div class="zen-games-grid">
+      <div class="zen-game-card">
+        <div class="zen-game-title">Valorant</div>
+        <div class="zen-game-wl">
+          <span class="zen-game-w">25</span>
+          <span class="zen-game-div">–</span>
+          <span class="zen-game-l">12</span>
+        </div>
+        <div class="zen-game-rank">Ascendant 2 · 68 RR</div>
+      </div>
+      <div class="zen-game-card">
+        <div class="zen-game-title">CS2</div>
+        <div class="zen-game-wl">
+          <span class="zen-game-w">55</span>
+          <span class="zen-game-div">–</span>
+          <span class="zen-game-l">22</span>
+        </div>
+        <div class="zen-game-rank">Faceit Level 10 · 2150 Elo</div>
+      </div>
+      <div class="zen-game-card" style="border-style: dashed; opacity: 0.5;">
+        <div class="zen-game-title" style="color: rgba(232,224,240,0.35);">+ add game</div>
+        <div style="font-size: 11px; color: rgba(232,224,240,0.25); margin-top: 4px;">via Studio</div>
+      </div>
+    </div>
+  </section>
+
+  <footer class="zen-footer">
+    <div class="zen-footer-left">zeneta.gg · Pakistan</div>
+    <div class="zen-social-links">
+      <a>YouTube</a>
+      <a>Instagram</a>
+      <a>Studio →</a>
+    </div>
+  </footer>
+</div>
