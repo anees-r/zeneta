@@ -4,6 +4,8 @@ import { useEffect, useState } from "react";
 export default function LiveBanner() {
   const [settings, setSettings] = useState(null);
 
+  const LIVE_STREAM_URL = `https://www.youtube.com/channel/${process.env.NEXT_PUBLIC_YOUTUBE_CHANNEL_ID}/live`;
+
   useEffect(() => {
     async function check() {
       try {
@@ -29,7 +31,8 @@ export default function LiveBanner() {
         {settings.liveMessage || "Zeneta is live right now!"}
       </span>
       <a
-        href="#live-stream"
+        href={LIVE_STREAM_URL}
+        target="_blank"
         className="text-xs text-lime-400/80 underline underline-offset-2 transition-colors hover:text-lime-400"
       >
         Watch now -&gt;
