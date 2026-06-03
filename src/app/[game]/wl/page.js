@@ -50,8 +50,8 @@ export default function WLOverlay({ params }) {
       <span style={{ fontSize: "52px", fontWeight: "700", color: "#a3e635", lineHeight: 1 }}>
         W {data.wins ?? 0}
       </span>
-      <span style={{ fontSize: "28px", color: "rgba(255,255,255,0.15)" }}>/</span>
-      <span style={{ fontSize: "52px", fontWeight: "700", color: "#a78bfa", lineHeight: 1 }}>
+      <span style={{ fontSize: "28px", color: "rgba(255,255,255,1)" }}>/</span>
+      <span style={{ fontSize: "52px", fontWeight: "700", color: "#fa8b8b", lineHeight: 1 }}>
         L {data.losses ?? 0}
       </span>
     </div>
