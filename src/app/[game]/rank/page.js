@@ -45,7 +45,7 @@ export default function RankOverlay({ params }) {
       </span>
       {data.subheading && (
         <>
-          <span style={{ fontSize: "28px", color: "#ceadff" }}>—</span>
+          <span style={{ fontSize: "28px", color: "#d9bfff" }}>—</span>
           <span style={{ fontSize: "38px", fontWeight: "600", color: "#a3e635", lineHeight: 1 }}>
             {data.subheading}
           </span>
