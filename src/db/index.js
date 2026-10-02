@@ -10,7 +10,10 @@ if (!process.env.DATABASE_URL) {
 
 const client =
   globalForDb.pgClient ??
-  postgres(process.env.DATABASE_URL, { ssl: "require", max: 10 });
+  postgres(process.env.DATABASE_URL, {
+    ssl: process.env.DATABASE_SSL === "true" ? "require" : false,
+    max: 10,
+  });
 
 if (process.env.NODE_ENV !== "production") {
   globalForDb.pgClient = client;
